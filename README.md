@@ -7,7 +7,7 @@ Instructor name: Kunal Ghosh
 
 I<p>nstallation source: https://github.com/kunalg123/riscv_workshop_collaterals/blob/master/run.sh</p>
 
-<p>DAY 1:
+<h1>DAY 1:</h1>
 
   <p>1)we learn how to type and execute a c code in the linux terminal
   
@@ -21,9 +21,20 @@ here is the assembly version of only the main() part of the C program:
 ![Screenshot from 2023-08-21 23-28-00](https://github.com/AkashRK1216/PES-ASIC-CLASS/assets/98165735/b2b199be-419c-476f-a65a-92ec62cf363e)
 ![Screenshot from 2023-08-21 23-21-03](https://github.com/AkashRK1216/PES-ASIC-CLASS/assets/98165735/3ca3315b-e5ee-44ea-9635-91607d2b0cb1)</p>
 
-This concludes day 1.</p>
+<p>This concludes day 1.</p>
 
-DAY 2:
+<h1>DAY 2:</h1>
+<p>An Application Binary Interface (ABI) defines how binary code interacts at a low level, specifying data structures, calling conventions, and system-level details to ensure compatibility between compiled software components on a given platform.
+
+Application software -(API)-> Standard Libraries -> OS -(ISA)-> Processor Architecture -(RTL)-> Hardware
+API - Application Programming Interface
+ISA - Intruction Set Architecture
+RTL - Register transfer level</p>
+<p>In the below code, we write a C program that iterates from 1 to n and finds the sum</p>
+<p>![Screenshot from 2023-08-25 20-31-32](https://github.com/AkashRK1216/PES-ASIC-CLASS/assets/98165735/0f8ac11b-262b-4049-b11d-d2c22d7e2c98)</p>
+
+
+
 
 
 
