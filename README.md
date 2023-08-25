@@ -6,9 +6,11 @@ This course covers key aspects of RISC-V and chip design, spanning design cycles
 Instructor name: Kunal Ghosh
 
 Installation source: https://github.com/kunalg123/riscv_workshop_collaterals/blob/master/run.sh
+
 DAY 1:
 
   1)we learn how to type and execute a c code in the linux terminal
+  
 ![Screenshot from 2023-08-21 23-11-19](https://github.com/AkashRK1216/PES-ASIC-CLASS/assets/98165735/d4839919-0f72-404c-abe0-67fa124b2f3d)
 ![Screenshot from 2023-08-21 23-12-39](https://github.com/AkashRK1216/PES-ASIC-CLASS/assets/98165735/6edddcea-9ebb-4391-aec5-41ea9adae824)
 
