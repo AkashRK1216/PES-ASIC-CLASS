@@ -31,7 +31,7 @@ API - Application Programming Interface
 ISA - Intruction Set Architecture
 RTL - Register transfer level</p>
 <p>In the below code, we write a C program that iterates from 1 to n and finds the sum</p>
-<p>![Screenshot from 2023-08-25 20-31-32](https://github.com/AkashRK1216/PES-ASIC-CLASS/assets/98165735/0f8ac11b-262b-4049-b11d-d2c22d7e2c98)</p>
+<p>!![Screenshot from 2023-08-25 20-31-32](https://github.com/AkashRK1216/PES-ASIC-CLASS/assets/98165735/0f8ac11b-262b-4049-b11d-d2c22d7e2c98)</p>
 
 
 
