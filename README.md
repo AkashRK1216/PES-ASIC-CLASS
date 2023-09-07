@@ -37,7 +37,8 @@ RTL - Register transfer level</p>
 <p>In this set of labs, we will learn about the Hardware Descriptive Language (HDL) called iverilog and its usage through a Command Line Interface</p>
 <p> GTKWave acts as a waveform simulator for us to verify the working of the hardware simulation</p>
 <p><h2>Waveform</h2></p>
-![Screenshot from 2023-09-07 20-08-26](https://github.com/AkashRK1216/PES-ASIC-CLASS/assets/98165735/20fbc2f0-f649-4286-b4ae-1ec509ba240e)
+![Screenshot from 2023-09-07 20-13-05](https://github.com/AkashRK1216/PES-ASIC-CLASS/assets/98165735/76245992-e2f9-444c-a5bf-de8b6a260b96)
+
 
 
 
