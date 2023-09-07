@@ -36,12 +36,30 @@ RTL - Register transfer level</p>
 <ol><h1>INTRODUCTION TO VERILOG</h1>
 <p>In this set of labs, we will learn about the Hardware Descriptive Language (HDL) called iverilog and its usage through a Command Line Interface</p>
 <p> GTKWave acts as a waveform simulator for us to verify the working of the hardware simulation</p>
-<p> here are the commands used to generate the waveform</p>
-![Screenshot from 2023-09-07 20-29-26](https://github.com/AkashRK1216/PES-ASIC-CLASS/assets/98165735/6d8326c0-3986-4c24-94f7-63c2d3e88c8d)
+<h2>LAB-1</h2>
+  This is the first lab where we simulate the waveform of a hardware component.
+  <p>Tools used: iverilog and gtkwave</p>
+  <p> here are the commands used to generate the waveform</p>
+  ![Screenshot from 2023-09-07 20-29-26](https://github.com/AkashRK1216/PES-ASIC-CLASS/assets/98165735/6d8326c0-3986-4c24-94f7-63c2d3e88c8d)
+  <p><h3>Waveform</h3></p>
+  ![Screenshot from 2023-09-07 20-13-05](https://github.com/AkashRK1216/PES-ASIC-CLASS/assets/98165735/1df232cf-a43b-4e9f-b2e3-1e9878ce5530)
+<h5>This completes Lab 1</h5>
+<h2>LAB-2</h2>
+  <p>Here we use a tool called YoSys. It is a framework for RTL synthesis and provides a basic set of synthesis algorithms for various application domains. </p>
+  <ol>Here are the steps followed while using yosys:
+    <li><p>initating yosys and reading the mux file:</p>
+    ![image](https://github.com/AkashRK1216/PES-ASIC-CLASS/assets/98165735/4842dcfa-4af0-49ce-b62e-3bd397872b84)
+    </li>
+    <li><p>Next, we use the "synth" command to synthesize the working of the good_mux file and we generate the stats of that particular component </p>
+    ![image](https://github.com/AkashRK1216/PES-ASIC-CLASS/assets/98165735/0042e70f-6a29-4790-b6c8-f1fdcf04e399)
+    </li>
+  
+  </ol>
 
-<p><h2>Waveform</h2></p>
-![Screenshot from 2023-09-07 20-13-05](https://github.com/AkashRK1216/PES-ASIC-CLASS/assets/98165735/1df232cf-a43b-4e9f-b2e3-1e9878ce5530)
-<p>This concludes lab 1</p>
+
+
+
+
 
 
 
