@@ -93,6 +93,7 @@ x10 and x11 are the source registers.</p>
   <p><h3>Waveform</h3></p>
   ![Screenshot from 2023-09-07 20-13-05](https://github.com/AkashRK1216/PES-ASIC-CLASS/assets/98165735/1df232cf-a43b-4e9f-b2e3-1e9878ce5530)
 <h5>This completes Lab 1</h5>
+<!--End of LAB 1 ########################################################################################################################################################################################-->
 <h2>LAB-2: RTL design using Verilog with SKY130 Technology</h2>
 <p><h3>Introduction to Verilog Design, RTL and Synthesis</h3></p>
   <ul>
@@ -117,6 +118,7 @@ x10 and x11 are the source registers.</p>
 
 <li>liberty(.lib) : It contains all cells required to represent any logic and the cells are of different flavours(different power, delay, operating conditions etc)</li>
   </ul>
+  <!-- Below lines are for yosys -->
   <ol>Here are the steps followed while using yosys:
     <li><p>initating yosys and reading the mux file:</p>
     ![image](https://github.com/AkashRK1216/PES-ASIC-CLASS/assets/98165735/4842dcfa-4af0-49ce-b62e-3bd397872b84)
