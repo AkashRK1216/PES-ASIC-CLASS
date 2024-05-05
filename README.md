@@ -103,6 +103,20 @@ x10 and x11 are the source registers.</p>
 
 <li><b>GTKWave:</b> GTKWave is an open-source waveform viewer that provides graphical visualization of simulation results produced by digital design simulation tools, aiding in the debugging and analysis of digital circuits. -Inputs : VCD FIle -output : Simulation waveform</li>
   </ul>
+  <ul>
+    <h4>Here are the terminologies used:</h4>
+    <li><b>Simulator :</b> The RTL should be check if it matches with the specifications provided. This work is done by Simulator and is used to simulate the design for its functionality
+<p>Example : iverilog</p>
+<p>Simulator looks for a change in input, based on which the output is evaluated ==> if there is no change in input, Then output is not evaluated.</p></li>
+<li>Design : The set of verilog code(s) that represents the provided functionality/Specification in the form of a netlist.</li>
+<li>Testbench : Setup to apply stimulus(test vectors)to the design inorder to check the functionality using the response obtained.</li>
+<p><h5>The response is obtained using iverilog in the form of VCD file that is visulaised using gtkwave</h5></p>
+<li>Synthesizer : Tool required t convert RTL to netlist</li>
+<p>Example : yosys</p>
+<li>Netlist : In Synthesis, RTL Design is converted to gate level netlist ie.,design is converted into gates and connections are made between the gates. This is givenout as a file called netlist.</li>
+
+<li>liberty(.lib) : It contains all cells required to represent any logic and the cells are of different flavours(different power, delay, operating conditions etc)</li>
+  </ul>
   <ol>Here are the steps followed while using yosys:
     <li><p>initating yosys and reading the mux file:</p>
     ![image](https://github.com/AkashRK1216/PES-ASIC-CLASS/assets/98165735/4842dcfa-4af0-49ce-b62e-3bd397872b84)
