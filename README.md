@@ -5,7 +5,7 @@ This is my github repo for ASIC classes
 This course covers key aspects of RISC-V and chip design, spanning design cycles, RISC-V ISA, analog IPs, and mixed-signal flow. It delves into process design kits, libraries, RTL design synthesis, and gate-level simulation. The curriculum also includes RTL-to-GDS flow, encompassing SoC design implementation from floor planning to post-layout timing analysis.</p>
 Instructor name: Kunal Ghosh
 
-I<p>nstallation source: https://github.com/kunalg123/riscv_workshop_collaterals/blob/master/run.sh</p>
+<p>Installation source: https://github.com/kunalg123/riscv_workshop_collaterals/blob/master/run.sh</p>
 
 <h1>DAY 1:</h1>
 
@@ -33,7 +33,7 @@ RTL - Register transfer level</p>
 <p>In the below code, we write a C program that iterates from 1 to n and finds the sum</p>
 <p>!![Screenshot from 2023-08-25 20-31-32](https://github.com/AkashRK1216/PES-ASIC-CLASS/assets/98165735/0f8ac11b-262b-4049-b11d-d2c22d7e2c98)</p>
 
-<ol><h1>INTRODUCTION TO VERILOG</h1>
+<h1>INTRODUCTION TO VERILOG</h1>
 <p>In this set of labs, we will learn about the Hardware Descriptive Language (HDL) called iverilog and its usage through a Command Line Interface</p>
 <p> GTKWave acts as a waveform simulator for us to verify the working of the hardware simulation</p>
 <h2>LAB-1</h2>
@@ -119,25 +119,120 @@ x10 and x11 are the source registers.</p>
 <li>liberty(.lib) : It contains all cells required to represent any logic and the cells are of different flavours(different power, delay, operating conditions etc)</li>
   </ul>
   <!-- Below lines are for yosys -->
-  <ol>Here are the steps followed while using yosys:
-    <li><p>initating yosys and reading the mux file:</p>
-    ![image](https://github.com/AkashRK1216/PES-ASIC-CLASS/assets/98165735/4842dcfa-4af0-49ce-b62e-3bd397872b84)
-    </li>
-    <li><p>Next, we use the "synth" command to synthesize the working of the good_mux file and we generate the stats of that particular component </p>
-    ![image](https://github.com/AkashRK1216/PES-ASIC-CLASS/assets/98165735/0042e70f-6a29-4790-b6c8-f1fdcf04e399)
-    </li>
-  
+  <ol><h3>Steps to create and obtain a waveform from yosys</h3>
+  <li>create a simple design file mux.v mux.v</li>
+  <li>write a testbench for it mux_tb.v</li>  
   </ol>
+  ![image](https://github.com/AkashRK1216/PES-ASIC-CLASS/assets/98165735/b51d1e8e-09cd-42bd-bec6-aa6b3044ed1a)
 
+  <h3>Some Important Points :</h3>
+<p>Every Liberate file has different flavours of cells such as slow,fast and typical.</p>
+<p>Every Liberate file has different flavours of cells such as slow,fast and typical.</p>
+<p>why slow cells? : If the combinational block provides output very fast, then it becomes harder for the next combinational block to process the signal. Therefore we use slow cells to balance the delay.(ENsure no HOLD issues)</p>
+<p>Faster cells and slower cells are differentiated based on the rate of charging and discharging, higher the rate, lesser the delay. This can be done when we can source more current through the transistors that is achieved by widening the transistors.</p>
+<p>Wider transistor : Low Delay : More area : More power</p>
+<p>Narrow transistors : Larger delay : Less area : Less power</p>
+Therofore, to achieve optimal syntheis result, we have to specify constraints to the synthesizer that says which set of cells to be selected for syntheis process.
 
-
-
-
-
-
-
-
+<h2>Interactive Flow (Synthesis)</h2>
+<ol>Here are the Steps required to perform Synthesis using Yosys
+  <li>open yosys where the verilog files are present using the command - <code>yosys</code></li>
+<li>Specify the technology library to be used - <code>read_liberty -lib <PATH_TO_.lib_FILE_LOCATION>/sky130_fd_sc_hd__tt_025C_1v80.lib</code></li>
+<li>specify all the verilog files to be synthesized - <code>read_verilog mux.v</code></li>
+<li>since some designs have submodules, it is necessary to mention the topmodule name <code> - synth -top mux</code></li>
+<li>Generate synthesized netlist (ABC links the expression declared in design file with cells present in library) <code>- abc -liberty <Path_to_.lib_File>/sky130_fd_sc_hd__tt_025C_1v80.lib</code></li>
+<li>To view the graphical representation of sytnthesized netlist<code> - show</code></li>
+<li>Write the generated netlist into a verilog file <code>- write_verilog mux_mapped.v</code> or <code>write_verilog -noattr mux_mapped.v</code></li>
 </ol>
+<p> here is an image of the ABC stats of the mux.v file</p>
+<img>![image](https://github.com/AkashRK1216/PES-ASIC-CLASS/assets/98165735/4bb90ca1-22cf-4e26-ade3-e197a36a42c0)
+ </img>
+ <p> Here is a netlist image of the mux.v File</p>
+ ![image](https://github.com/AkashRK1216/PES-ASIC-CLASS/assets/98165735/b87eb68b-464f-44de-8764-0895927f4aad)
+<p> this conlcudes Day 1 in RTL design LAB</p>
+ <!-- End of Day 1 in Lab 2 -->
+ <h2>Day 2 of RTL Design- Timing libs</h2>
+ <h3>Some terms in a Liberate File</h3>
+ <ul>
+ <li><b>tt</b> - Typical PMOS typical NMOS (Regular working speed)</li>
+
+<li><b>025C</b> - Temperature</li>
+
+<li><b>1v80</b> - supply voltage The above 3 parameters shortly known as PVT(Process Voltage Temperature) define how and at what conditions the fabricated silicon works</li>
+
+<li><b>sky130</b> - 130nm Technology node</li>
+
+<li><b>fd </b>- Foundry design</li>
+
+<li>sc - standard cell</li>
+
+<li>hd - high density - This specifies that this library supports using these standard cells at a high density resulting in samller chip area</li>
+
+<li>The library file consists of all the details of the cell ie., leakage power, area, timing etc. for all input combinations</li>   
+ </ul>
+
+ <h3>Types of Synthesis</h3>
+ <p><b>1.Hierarchial Synthesis:</b>Here the hierarchy is maintained. The submodules are displayed as it is </p>
+ <p>For example:</p>
+ ![image](https://github.com/AkashRK1216/PES-ASIC-CLASS/assets/98165735/9b861b05-b803-4801-99ac-8c84769480d5)
+ <ul><h5>A Few notes</h5>
+ <li>While synthesizing OR gate , AND gate, most of the times the tool uses NAND Gates to obtain the functionality as in NAND gates,The NMOS are connected in series and provide better signal transfer.</li>
+<li>Submodule level synthesis helps reduce synthesis time when in a massive design, the same submodule has been called many times and also we can synthesize all submodules and stitch them to obtain top level.But here the optimisation also takes place at submodule level ,not at top level.3</li> 
+ </ul>
+
+ <h3>Flop coding styles</h3>
+ <ul>WHat are flops and why do we need them?
+ <li>In digital electronic circuits and digital system design, a "flop" typically refers to a flip-flop, which is a fundamental building block used for storing and manipulating binary information.</li>
+<li>Flip-flops are crucial components in digital logic circuits and serve several essential purposes such as Memory Element, Synchronization, Sequential Logic, Clocking, Edge Detection, Pipelining, State Storage, Memory Cells.</li>
+<li>Flip-flops are essential components in digital electronics because they provide the means to store, manipulate, and control binary information, enabling the design and operation of a wide range of digital systems and devices, from simple registers to complex microprocessors and digital signal processors.</li>
+<li>Their role in sequential logic, synchronization, and memory storage is fundamental to the functioning of digital circuits and systems.</li>
+<li>It's a type of sequential logic element that stores binary information (0 or 1) and can change its output based on clock signals and input values.</li>   
+ </ul>
+ <b>We use a D flip flop largely in circuits and There are two types:</b>
+ <ul>
+   Synchronous and Asynchronous
+   <li>
+     <ul><b>Asynchronous Reset</b>
+       <li> A D flip-flop with an asynchronous reset is a type of digital flip-flop circuit that includes a "D" (data) input and an asynchronous reset input. It is a fundamental building block in digital electronics and sequential logic circuits.</li>
+
+<li>a D flip-flop with asynchronous reset stores data at the input (D) and transfers it to the output (Q) on a clock edge (depending on the flip-flop type).</li>
+     </ul>
+     ![image](https://github.com/AkashRK1216/PES-ASIC-CLASS/assets/98165735/a926a263-ed9b-4945-a583-0bd4e284d9a0)
+   </li>
+   <li>
+     <ul><b>Synchronous Set</b>
+       <li> When the reset is high on the positive edge of the clock, the output of the flip-flop is forced to 0.</li>
+<li>Else, on the positive edge of the clock, the stored value is updated at the output.</li>
+     </ul>
+     ![image](https://github.com/AkashRK1216/PES-ASIC-CLASS/assets/98165735/c02a489f-552c-4489-88dd-7d0027814981)
+
+   </li>
+ </ul>
+
+ <h2>Gate Level Simulation</h2>
+ <ul>
+   <li> used for post-synthesis verification to ensure functionality and timing requirements</li>
+<li>input : testbench ,synthesized netlist of a deisgn, gate level verilog models (since design now is synthesised one , it has library gate definitions in it.so we have to pass those verilog models too)</li>
+<li>sometimes there is a mismatch in simulation results for post-synthesis netlist that's called synthesis simulation mismatch</li>
+ </ul>
+ <h3>Pre and Post synthesis simulations of a conditional mux</h3>
+ ![image](https://github.com/AkashRK1216/PES-ASIC-CLASS/assets/98165735/36288cbb-f372-4d74-b7bd-26745a36b25d)
+
+
+ 
+ 
+
+
+ 
+
+
+
+
+
+
+
+
+
 
 
 
