@@ -21,6 +21,46 @@ here is the assembly version of only the main() part of the C program:
 ![Screenshot from 2023-08-21 23-28-00](https://github.com/AkashRK1216/PES-ASIC-CLASS/assets/98165735/b2b199be-419c-476f-a65a-92ec62cf363e)
 ![Screenshot from 2023-08-21 23-21-03](https://github.com/AkashRK1216/PES-ASIC-CLASS/assets/98165735/3ca3315b-e5ee-44ea-9635-91607d2b0cb1)</p>
 
+<h2>Integer Number repreentation</h2>
+<ol>
+  There are two types of number, signed and unsigned.
+  <li>
+    <ul><b>64-Bit Unsigned Numbers</b>
+<li>Unsigned numbers, also known as non-negative numbers, are numerical values that represent magnitudes without indicating direction or sign.</li>
+<li>Range: 0 to 2^(N) - 1.</li>
+      <code>#include <stdio.h>
+#include <math.h>
+
+int main()
+{
+	unsigned long long int max = (unsigned long long int) (pow(2,64) -1);
+	unsigned long long int min = (unsigned long long int) (pow(2,64) *(-1));
+	printf("lowest number represented by unsigned 64-bit integer is %llu\n",min);
+	printf("highest number represented by unsigned 64-bit integer is %llu\n",max);
+	return 0;
+}
+</code>
+    </ul>
+  </li>
+      <li>
+        <ul><b>64-Bit Signed Numbers</b>
+<li>Signed numbers are numerical values that can represent both positive and negative magnitudes, along with zero.</li>
+<li>Range : -(2^(N-1)) to 2^(N-1) - 1</li>
+        </ul>
+        <code>#include <stdio.h>
+#include <math.h>
+
+int main(){
+	long long int max = (long long int) (pow(2,63) -1);
+	long long int min = (long long int) (pow(2,63) *(-1));
+	printf("lowest number represented by signed 64-bit integer is %lld\n",min);
+	printf("highest number represented by signed 64-bit integer is %lld\n",max);
+	return 0;
+}
+</code>
+      </li>
+</ol>
+
 <p>This concludes day 1.</p>
 
 <h1>DAY 2:</h1>
@@ -33,7 +73,7 @@ RTL - Register transfer level</p>
 <p>In the below code, we write a C program that iterates from 1 to n and finds the sum</p>
 <p>!![Screenshot from 2023-08-25 20-31-32](https://github.com/AkashRK1216/PES-ASIC-CLASS/assets/98165735/0f8ac11b-262b-4049-b11d-d2c22d7e2c98)</p>
 
-<h1>INTRODUCTION TO VERILOG</h1>
+<h1>INTRODUCTION TO IVERILOG</h1>
 <p>In this set of labs, we will learn about the Hardware Descriptive Language (HDL) called iverilog and its usage through a Command Line Interface</p>
 <p> GTKWave acts as a waveform simulator for us to verify the working of the hardware simulation</p>
 <h2>LAB-1</h2>
@@ -71,9 +111,7 @@ In this Example:
 
 <p>Add Instructions: Add instructions are used to perform addition operations on registers. They add the values of two source registers and store the result in a destination register.</p>
 <p>Example <code>add x9, x10, x11</code></p>
-
-In this Example
-
+In this Example:
 <b>add</b> is the add instruction.
 <b>x9</b> is the destination register.
 x10 and x11 are the source registers.</p>
@@ -85,6 +123,18 @@ x10 and x11 are the source registers.</p>
 <p>ABI names for registers serve as a standardized way to designate the purpose and usage of specific registers within a software ecosystem. These names play a critical role in maintaining compatibility, optimizing code generation, and facilitating communication between different software components.</p>
 <img>![image](https://github.com/AkashRK1216/PES-ASIC-CLASS/assets/98165735/7ba065fb-b805-4c9b-b345-cc209a7abf0d)
 
+<h3>Introduction to yosys</h3>
+<p>A synthesizer is something that converts an RTL into a netlist. It essentially transelates a higher level HDL into a lower level HDL</p>
+![image](https://github.com/AkashRK1216/PES-ASIC-CLASS/assets/98165735/82cb04e5-e04a-4077-8132-5e75cd154039)
+<p><b>Yosys</b>is an open source framework which performs the job of a synthesizer.</p>
+<ol>Steps to setup yosys
+  <li><code>read_verilog</code> command: to read the design</li>
+  <li><code>read_liberty</code> command: to read the .lib</li>
+  <li><code>write_verilog</code> command: to write the netlist file</li>
+</ol>
+![image](https://github.com/AkashRK1216/PES-ASIC-CLASS/assets/98165735/32b38e06-dddc-4e3c-aaba-06fa0d8aa6fe)
+<p>A<b>.lib</b>file contains the physical and timing specs of the components used in the circuits</p>
+<p>It is essentially a collection of logic modules</p>
 
   This is the first lab where we simulate the waveform of a hardware component.
   <p>Tools used: iverilog and gtkwave</p>
@@ -92,6 +142,12 @@ x10 and x11 are the source registers.</p>
   ![Screenshot from 2023-09-07 20-29-26](https://github.com/AkashRK1216/PES-ASIC-CLASS/assets/98165735/6d8326c0-3986-4c24-94f7-63c2d3e88c8d)
   <p><h3>Waveform</h3></p>
   ![Screenshot from 2023-09-07 20-13-05](https://github.com/AkashRK1216/PES-ASIC-CLASS/assets/98165735/1df232cf-a43b-4e9f-b2e3-1e9878ce5530)
+<h3>Introduction to Timing Libs</h3>
+<p>The .lib file talked about earlier are used by Electronic Design Automation tools to perform various tasks in the IC Design process</p>
+<p>We use the <code>vim ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib</code>command to view the .lib file</p>
+![image](https://github.com/AkashRK1216/PES-ASIC-CLASS/assets/98165735/0cd2e4f5-78be-4af6-937c-0255aa1e9a7b)
+
+
 <h5>This completes Lab 1</h5>
 <!--End of LAB 1 ########################################################################################################################################################################################-->
 <h2>LAB-2: RTL design using Verilog with SKY130 Technology</h2>
